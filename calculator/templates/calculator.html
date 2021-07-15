@@ -1,0 +1,56 @@
+{% extends "base/base.html" %} {% block content %}
+
+<div class="mt-5 card p-3">
+    <nav class="nav">
+    <a class="nav-link active" href="#">Calculator</a>
+    <a class="nav-link" href="#">History Page</a>
+    <a class="nav-link" href="#">Profile</a>
+    </nav>
+
+      <hr>
+
+  <form method="POST" action="{% url 'calculate' %}">
+  {% csrf_token %}
+
+    <div class="row">
+      <div class="col-4">
+        <div class="form-group text-left">
+          <label for="expression" class="text-left">Enter your expression</label>
+          <input
+            type="text"
+            class="form-control"
+            id="expression"
+            value="{{ expression }}"
+            name="expression"
+            aria-describedby="ExpressionHelp"
+            placeholder="8*98-87+98/68"
+          />
+        </div>
+      </div>
+
+      <label
+        for="expression"
+        class="text-left m-4"
+        style="margin-top: 35px !important"
+        >=</label
+      >
+      <div class="col-4">
+        <div class="form-group text-left">
+          <label for="expression" class="text-left">Result</label>
+          <input
+            type="text"
+            class="form-control"
+            id="expression"
+            value="{{ calculatedvalue }}"
+            readonly
+            aria-describedby="ExpressionHelp"
+          />
+          <span>{{error_message}}</span>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-outlined col-3">Calculate</button>
+  </form>
+</div>
+
+{% endblock %}
